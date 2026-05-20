@@ -10,16 +10,24 @@
         "name": "verify GET patients return data",
         "steps": [
           {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
             "arguments": [],
             "keyword": "Given ",
             "line": 4,
             "name": "doctor is logged in",
             "match": {
-              "location": "src/step-definitions/api/ApiSteps.ts:3"
+              "location": "src/step-definitions/api/ApiSteps.ts:12"
             },
             "result": {
-              "status": "passed",
-              "duration": 3545582
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
@@ -28,11 +36,11 @@
             "line": 5,
             "name": "user hits GET \"/api-patients\"",
             "match": {
-              "location": "src/step-definitions/api/ApiSteps.ts:7"
+              "location": "src/step-definitions/api/ApiSteps.ts:20"
             },
             "result": {
-              "status": "passed",
-              "duration": 1664125
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
@@ -41,11 +49,129 @@
             "line": 6,
             "name": "verify status code is 200",
             "match": {
-              "location": "src/step-definitions/api/ApiSteps.ts:11"
+              "location": "src/step-definitions/api/ApiSteps.ts:26"
             },
             "result": {
-              "status": "passed",
-              "duration": 983749
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "all-tests-related-to-patient-module;verify-doctor-can-create-patient-with-post",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "verify doctor can create patient with POST",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 10,
+            "name": "doctor is logged in",
+            "match": {
+              "location": "src/step-definitions/api/ApiSteps.ts:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"dob\": \"2026-05-20\",\n    \"gender\": \"Male\",\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"address\": \"string\",\n    \"emergency_contact_name\": \"string\",\n    \"emergency_contact_phone\": \"string\",\n    \"insurance_provider\": \"string\",\n    \"insurance_policy_number\": \"string\"\n}",
+                "line": 12
+              }
+            ],
+            "keyword": "When ",
+            "line": 11,
+            "name": "user hits POST \"/api-patients\" with body",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "verify status code is 201",
+            "match": {
+              "location": "src/step-definitions/api/ApiSteps.ts:26"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "all-tests-related-to-patient-module;verify-get-appointments-return-data",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "verify GET appointments return data",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 33,
+            "name": "doctor is logged in",
+            "match": {
+              "location": "src/step-definitions/api/ApiSteps.ts:12"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 34,
+            "name": "user hits GET \"/api-appointments\"",
+            "match": {
+              "location": "src/step-definitions/api/ApiSteps.ts:20"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 35,
+            "name": "verify status code is 200",
+            "match": {
+              "location": "src/step-definitions/api/ApiSteps.ts:26"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
             }
           }
         ],

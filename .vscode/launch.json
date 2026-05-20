@@ -1,13 +1,14 @@
 {
   "version": "0.2.0",
   "configurations": [
+    
     {
       "name": "Run Current Feature",
       "type": "node",
       "request": "launch",
       "program": "${workspaceFolder}/node_modules/.bin/cucumber-js",
       "args": [
-        "${file}"
+        "${relativeFile}"
       ],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal"

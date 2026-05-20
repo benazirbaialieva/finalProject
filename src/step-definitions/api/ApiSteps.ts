@@ -1,13 +1,33 @@
-import { Given, When, Then } from '@cucumber/cucumber'
+import { Given, When, Then, Before } from '@cucumber/cucumber'
+import { APIClient } from '../../api/clients/APIClient';
+import { request, expect } from '@playwright/test';
 
-Given('doctor is logged in', function () {
+const apiClient = new APIClient();
 
+Before(async function () {
+    this.request = await request.newContext();
 });
 
-When('user hits GET {string}', function (endpoint) {
 
+Given('doctor is logged in', async function () {
+    this.token = await apiClient.login({
+        request : this.request,
+        email : process.env.USER_EMAIL,
+        password : process.env.USER_PASSWORD
+    });
 });
+
+When('user hits GET {string}', async function (endpoint) {
+        this.response = await apiClient.getRequest({request : this.request}, endpoint, this.token);
+        console.log(await this.response.json());
+});
+
 
 Then('verify status code is {int}', function (expectedStatusCode) {
+    expect(this.response.status()).toBe(expectedStatusCode);
+});
+
+
+When('user hits POST {string} with body', async function (endpoint, requestBody) {
 
 });
