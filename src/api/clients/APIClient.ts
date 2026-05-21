@@ -62,6 +62,30 @@ export class APIClient {
         });
         return response;
     }
+
+
+    async putRequest({ request }, endpoint: string, token: string, data: object): Promise<APIResponse> {
+        const url = process.env.BASE_URL! + endpoint;
+        const response = await request.put(url, {
+            headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            data,
+        });
+        return response;
+    }
+
+
+    async getRandomPatientID({ request }, token: string): Promise<string> {
+        const response = await this.getRequest({ request }, "/api-patients", token);
+        const responseBody = await response.json();
+        const patients = responseBody.data;
+        const randomPatient = patients[Math.floor(Math.random() * patients.length)];
+        console.log('RANDOM PATIENT: ' + randomPatient.patient_id);
+        return randomPatient.patient_id;
+    }
+
 }
 
 export function createPatientBody() {
@@ -79,3 +103,4 @@ export function createPatientBody() {
         "insurance_policy_number": faker.string.alphanumeric(10).toUpperCase()
     };
 }
+

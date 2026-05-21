@@ -47,5 +47,30 @@ When('user creates random patient using POST {string}', async function (endpoint
         patientBody
     );
     expect(this.response.status()).toBe(201);
+});
 
+      
+When('user provides {string} with new value {string}', async function (key, value) {
+    this.requestBody = { ...this.requestBody, [key]: value };
+});
+
+
+
+When('user hits PUT {string}', async function (endpoint) {
+    endpoint = endpoint + '/' + await apiClient.getRandomPatientID({ request: this.request }, this.token);
+
+    this.response = await apiClient.putRequest(
+        { request: this.request },
+        endpoint,
+        this.token,
+        this.requestBody
+    );
+    expect(this.response.status()).toBe(200);
+});
+
+
+
+Then('verify response body contains {string} with {string}', async function (key, value) {
+    const body = await this.response.json();
+    expect(body[key]).toContain(value);
 });

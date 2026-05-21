@@ -34,9 +34,11 @@ Scenario: verify doctor can create patient with POST
     When user creates random patient using POST "/api-patients"
     Then verify status code is 201
 
-
-
-Scenario: verify GET appointments return data
+@updatePatient
+Scenario: verify doctor can update patient with PUT
     Given doctor is logged in
-    When user hits GET "/api-appointments"
+    When user provides "first_name" with new value "UpdatedName"
+    And user provides "last_name" with new value "UpdatedLastName"
+    And user hits PUT "/api-patients"
     Then verify status code is 200
+    And verify response body contains "first_name" with "UpdatedName"
